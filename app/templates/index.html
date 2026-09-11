@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexStackAI DevOps Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header>
+        <div>
+            <p class="eyebrow">NEXSTACKAI</p>
+            <h1>DevOps Dashboard</h1>
+            <p class="subtitle">
+                Dockerized application environment
+            </p>
+        </div>
+
+        <div class="live-badge">
+            <span></span>
+            LIVE
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <p class="eyebrow">FINAL PROJECT</p>
+            <h2>Docker building blocks.<br>One real application.</h2>
+            <p>
+                Flask, PostgreSQL, Docker Compose, networking
+                and persistent storage working together.
+            </p>
+        </div>
+
+        <div class="architecture">
+            <div class="service-box">
+                <small>WEB SERVICE</small>
+                <strong>Flask</strong>
+                <span>Port 8080</span>
+            </div>
+
+            <div class="connection">→</div>
+
+            <div class="service-box">
+                <small>DATABASE</small>
+                <strong>PostgreSQL</strong>
+                <span>Persistent</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="card">
+            <span>Application</span>
+            <strong>{{ application_status }}</strong>
+            <p>Web service is responding</p>
+        </div>
+
+        <div class="card">
+            <span>Database</span>
+            <strong>{{ database_status }}</strong>
+            <p>PostgreSQL connection active</p>
+        </div>
+
+        <div class="card">
+            <span>Containers</span>
+            <strong>2 RUNNING</strong>
+            <p>Web + Database</p>
+        </div>
+
+        <div class="card">
+            <span>Storage</span>
+            <strong>PERSISTENT</strong>
+            <p>Docker named volume</p>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-title">
+            <div>
+                <p class="eyebrow">DEPLOYMENTS</p>
+                <h3>Recent Activity</h3>
+            </div>
+
+            <span class="success-pill">ALL SYSTEMS NORMAL</span>
+        </div>
+
+        <div class="table">
+            <div class="row header">
+                <span>Version</span>
+                <span>Environment</span>
+                <span>Status</span>
+                <span>Deployed</span>
+            </div>
+
+            {% for deployment in deployments %}
+            <div class="row">
+                <span>{{ deployment[0] }}</span>
+                <span>{{ deployment[1] }}</span>
+                <span class="status">{{ deployment[2] }}</span>
+                <span>{{ deployment[3].strftime("%Y-%m-%d %H:%M") }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        Docker Explained Simply — Final Project
+    </footer>
+
+</div>
+
+</body>
+</html>
